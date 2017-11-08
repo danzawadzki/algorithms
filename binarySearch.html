@@ -65,7 +65,7 @@
         //Checking pivot and if rangeMax equals rangeMin to don't skip array starting and ending elements
         if (array[rangePivot] === searched || (rangeMax === rangeMin && array[rangeMax] === search)) {
             searchedIndex = rangePivot;
-            console.log("Founded!");
+            console.log(`Founded! Index=${searchedIndex}`);
             break;
         }
         else if (array[rangePivot] > searched) {
@@ -82,7 +82,8 @@
 
     //Creating result element
     const listElementSearchedIndex = document.createElement("li");
-    listElementSearchedIndex.innerHTML = `<strong>Searched index</strong>=${searchedIndex !== null ? searchedIndex : "Not found"}`;
+    listElementSearchedIndex.innerHTML =
+        `<strong>Searched index</strong>=${searchedIndex !== null ? searchedIndex : "Not found"}`;
     ul.insertAdjacentElement("beforeend", listElementSearchedIndex);
 
 </script>
