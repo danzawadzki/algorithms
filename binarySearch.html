@@ -1,0 +1,90 @@
+<!doctype html>
+<html class="no-js" lang="eng">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible"
+          content="ie=edge">
+    <title>Binary Search</title>
+    <meta name="description"
+          content="Binnary Search algorithm">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+          crossorigin="anonymous">
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience and security.</p>
+<![endif]-->
+<!-- App -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <h1 class="display-3 font-weight-normal mt-5 mb-4">Binary Search</h1>
+            <p class="mb-5">Binary search is an efficient algorithm for finding an item from an ordered list of items.
+                It works by repeatedly dividing in half the portion of the list that could contain the item, until
+                you've narrowed down the possible locations to just one. </p>
+            <ul>
+                <li><strong>Average performance</strong>=O(log n)</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    //Declaring variables
+    let array = [9, 68, 196, 9, 1, 30, 41, 115, 119, 70, 190, 93, 81, 136, 106, 168, 149, 53, 166, 166, 149, 115, 200, 62, 77, 45, 182, 129, 82, 186, 88, 112, 38, 65, 150, 129, 77, 99];
+    const ul = document.querySelector("ul");
+    array = array.sort((a, b) => a > b ? 1 : -1);
+
+    //Creating elements
+    const listElementArray = document.createElement("li");
+    listElementArray.innerHTML = `<strong>Array</strong>=[${array.join(", ")}]`;
+    ul.insertAdjacentElement("afterbegin", listElementArray);
+
+    const listElementArrayLength = document.createElement("li");
+    listElementArrayLength.innerHTML = `<strong>Array length</strong>=${array.length}`;
+    ul.insertAdjacentElement("afterbegin", listElementArrayLength);
+
+    //Binary search variables
+    let rangeMin = 0,
+        rangeMax = array.length - 1,
+        rangePivot = rangeMax / 2 | 0,
+        searched = 1,
+        searchedIndex = null,
+        iterationCounter = 0;
+
+    //Binary search loop
+    do {
+        iterationCounter++;
+        rangePivot = (rangeMin + rangeMax) >> 1;
+        console.log(rangePivot, (rangeMin + rangeMax) / 2);
+        //Checking pivot and if rangeMax equals rangeMin to don't skip array starting and ending elements
+        if (array[rangePivot] === searched || (rangeMax === rangeMin && array[rangeMax] === search)) {
+            searchedIndex = rangePivot;
+            console.log("Founded!");
+            break;
+        }
+        else if (array[rangePivot] > searched) {
+            rangeMax = rangePivot - 1;
+            console.log(array[rangePivot]);
+        }
+        else if (array[rangePivot] < searched) {
+            rangeMin = rangePivot + 1;
+            console.log(array[rangePivot]);
+        }
+        console.log(`Interation ${iterationCounter}: rangeMin=${rangeMin}, rangeMax=${rangeMax}`);
+
+    } while (rangeMin <= rangeMax);
+
+    //Creating result element
+    const listElementSearchedIndex = document.createElement("li");
+    listElementSearchedIndex.innerHTML = `<strong>Searched index</strong>=${searchedIndex !== null ? searchedIndex : "Not found"}`;
+    ul.insertAdjacentElement("beforeend", listElementSearchedIndex);
+
+</script>
+</body>
+</html>
